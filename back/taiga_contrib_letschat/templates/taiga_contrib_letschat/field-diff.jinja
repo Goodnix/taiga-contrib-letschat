@@ -24,7 +24,7 @@
 {% elif field_name in ["tags", "watchers"] %}
     **{{ field_name|title }}** **From:** "{{ ', '.join(values.0) }}" **To:** "{{ ', '.join(values.1) }}"
 
-{% elif field_name in ["description", "content", "blocked_note"] %}
+{% elif field_name in ["description", "blocked_note"] %}
     **{{ field_name.replace("_", " ") }}** {% if values.0 %}**From:** "{{ values.0 }}"{% endif %} **To:** "{{ values.1 or "empty" }}"
 
 {% elif field_name == "assigned_to" %}
@@ -49,6 +49,8 @@
             **{{ att.name|title }}**_{{ _("deleted") }}_
         {% endfor %}
     {% endif %}
+
+{% elif field_name == "content" %}
 
 {% else %}
     **{{ field_name|title }}** **From:** "{{ values.0 }}" **To:** "{{ values.1 }}"
